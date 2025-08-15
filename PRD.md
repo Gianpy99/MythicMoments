@@ -1,43 +1,37 @@
-# Daily Fantasy Event Bot - PRD
+# PRD — Daily Fantasy Citation & Image Generator
 
-## Vision
-Fornire ogni giorno un evento o citazione rilevante dai mondi di Tolkien, Harry Potter e Matrix, con la possibilità di generare immagini ispirate allo stile Disney/Ghibli/Tolkien, per fruizione via Telegram o app futura.
+## Nome App
+**Da decidere** (proposta: FantasyDaily, EpicDay, DailySaga)
 
-## Obiettivi
-- Fornire un fatto del giorno per ciascun universo.
-- Supportare più eventi per giorno (fino a 3 per universo).
-- Preparare il sistema per integrazione futura con immagini AI.
-- Database flessibile per gestire espansione futura (nuovi universi o citazioni).
+## Scopo
+Generare quotidianamente fatti e citazioni da universi fantastici: Tolkien, Harry Potter, Matrix.  
+Inoltre generare immagini correlate in stile Disney/Ghibli/Tolkien.
 
-## Utenti Target
-- Fan di Tolkien, Harry Potter e Matrix.
-- Utenti Telegram o futuri utenti app mobile/social.
+## Funzionalità principali
+1. Database SQLite con eventi giornalieri per:
+   - Tolkien
+   - Harry Potter
+   - Matrix
+2. Gestione fino a 3 eventi per giorno per universo (`event_index`)
+3. Web UI Flask con:
+   - Generazione prompt immagini
+   - Dashboard AppPulse per monitorare DB e contenuti
+4. Modulo generatore prompt immagini:
+   - Include anno, citazione, universo
+   - Stile predefinito Disney/Ghibli/Tolkien
+5. Possibilità futura di integrazione con Telegram o social media
 
-## Funzionalità Principali
-1. **Database cronologico (SQLite)**  
-   - Giorni predefiniti (01-01 → 12-31).  
-   - Eventi multipli per universo.  
-   - Campi: `year`, `fact`, `quote`.
+## Architettura
+- Backend: Python + Flask
+- Database: SQLite
+- Moduli:
+  - `daily_fantasy_db.py`: gestione database
+  - `image_prompt_generator.py`: generatore prompt immagini
+  - `app.py`: web UI + integrazione
+- Dashboard interna: AppPulse
 
-2. **Bot giornaliero**  
-   - Seleziona eventi del giorno.  
-   - Genera testo pronto per Telegram o app.
-
-3. **Generazione immagine AI (futura)**  
-   - Stile Disney/Ghibli/Tolkien.  
-   - Basata su fatto/citazione.
-
-4. **Gestione multi-evento**  
-   - Fino a 3 eventi per giorno/universo.
-
-## Fasi del Progetto
-1. Setup DB e prototipo Python (completato con script SQLite).  
-2. Popolamento dati iniziali (Harry Potter e Tolkien primi eventi).  
-3. Bot Telegram (pubblica evento del giorno).  
-4. Integrazione immagine AI.  
-5. Eventuale espansione social / app mobile.
-
-## Metriche di Successo
-- 100% giorni dell’anno coperti con almeno 1 evento.  
-- Bot Telegram operativo, pubblica evento giornaliero senza errori.  
-- Possibilità di aggiungere nuovi eventi senza modifiche al codice.
+## Estensioni future
+- Popolamento automatico DB via AI
+- Pubblicazione su Telegram / social media
+- Multi-event per giorno più esteso
+- Generazione immagini con AI direttamente dalla UI
